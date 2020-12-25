@@ -1,0 +1,26 @@
+# https://www.baeldung.com/spring-boot-h2-database
+# https://www.springboottutorial.com/spring-boot-and-h2-in-memory-database
+server:
+  port: 8081
+
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:/${user.dir}/db/memory
+    username: username
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
