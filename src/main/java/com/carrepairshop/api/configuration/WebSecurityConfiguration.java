@@ -47,12 +47,23 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter implements W
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/users/register").permitAll()
-            .and().authorizeRequests().antMatchers( "/h2-console/**").permitAll()
-            .and().authorizeRequests().anyRequest().authenticated()
-            .and().httpBasic()
-            .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and().headers().frameOptions().disable()
-            .and().cors().and().csrf().disable();
+        http
+            .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/users/register").permitAll()
+                .antMatchers( "/h2-console/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .httpBasic()
+                .and()
+            .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+            .headers()
+                .frameOptions().disable()
+                .and()
+            .cors()
+                .disable()
+            .csrf()
+                .disable();
     }
 }
