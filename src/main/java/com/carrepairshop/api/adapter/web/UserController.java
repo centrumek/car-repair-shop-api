@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.UserPrincipal;
 import com.carrepairshop.api.application.uc.user.password.change.ChangeUserPasswordUC;
 import com.carrepairshop.api.application.uc.user.password.change.ChangeUserPasswordUC.ChangeUserPasswordCommand;
 import com.carrepairshop.api.application.uc.user.create.CreateUserUC;
@@ -39,7 +38,7 @@ class UserController {
     }
 
     @Operation(security = @SecurityRequirement(name = "basicAuth"))
-    @PreAuthorize("hasAnyRole('CUSTOMER', 'EMPLOYEE', 'HEAD')")
+    @PreAuthorize("hasAnyRole('EMPLOYEE', 'HEAD')")
     @PostMapping
     User createUser(@Valid @RequestBody final CreateUserCommand command,
                     @AuthenticationPrincipal final UserPrincipal userPrincipal) {

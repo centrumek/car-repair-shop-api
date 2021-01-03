@@ -1,8 +1,8 @@
 package com.carrepairshop.api.application.uc.user.password.change;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
-import com.carrepairshop.api.application.port.user.in.UpdateUserPasswordPort;
+import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.application.port.in.UpdateUserPasswordPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

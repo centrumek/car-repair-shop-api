@@ -1,7 +1,7 @@
 package com.carrepairshop.api.application.uc.user.create;
 
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.UserPrincipal;
 import io.swagger.v3.oas.annotations.Hidden;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

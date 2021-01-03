@@ -1,5 +1,6 @@
-package com.carrepairshop.api.application.domain.user;
+package com.carrepairshop.api.application.domain;
 
+import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,7 @@ import lombok.Value;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
 
-    String uuid;
+    UUID uuid;
     Role role;
     String email;
     String firstName;

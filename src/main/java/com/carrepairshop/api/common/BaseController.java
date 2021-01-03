@@ -2,12 +2,14 @@ package com.carrepairshop.api.common;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
@@ -53,6 +55,18 @@ public class BaseController extends ResponseEntityExceptionHandler {
     @ExceptionHandler(EntityExistsException.class)
     public ApiError handleEntityExistsException(EntityExistsException ex,
                                                 WebRequest request) {
+        return ApiError.builder()
+                       .code(BAD_REQUEST)
+                       .status(BAD_REQUEST.value())
+                       .message(ex.getLocalizedMessage())
+                       .path(getRequestURI(request))
+                       .build();
+    }
+
+    @ExceptionHandler(value = {PropertyReferenceException.class})
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public ApiError handlePropertyReferenceException(PropertyReferenceException ex,
+                                                     WebRequest request) {
         return ApiError.builder()
                        .code(BAD_REQUEST)
                        .status(BAD_REQUEST.value())

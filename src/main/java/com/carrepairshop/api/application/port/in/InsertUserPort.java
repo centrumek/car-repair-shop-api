@@ -1,7 +1,7 @@
-package com.carrepairshop.api.application.port.user.in;
+package com.carrepairshop.api.application.port.in;
 
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.User.Role;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.User.Role;
 import com.carrepairshop.api.application.uc.user.create.CreateUserUC.CreateUserCommand;
 import com.carrepairshop.api.application.uc.user.register.RegisterUserUC.RegisterUserCommand;
 

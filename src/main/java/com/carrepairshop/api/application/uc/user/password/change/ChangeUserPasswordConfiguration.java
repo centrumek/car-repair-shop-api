@@ -3,7 +3,7 @@ package com.carrepairshop.api.application.uc.user.password.change;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.carrepairshop.api.application.port.user.in.UpdateUserPasswordPort;
+import com.carrepairshop.api.application.port.in.UpdateUserPasswordPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

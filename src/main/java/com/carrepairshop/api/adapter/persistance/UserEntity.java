@@ -1,10 +1,12 @@
-package com.carrepairshop.api.adapter.persistance.user;
+package com.carrepairshop.api.adapter.persistance;
 
-import com.carrepairshop.api.application.domain.user.User.Role;
+import java.util.List;
+import com.carrepairshop.api.application.domain.User.Role;
 import com.carrepairshop.api.common.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

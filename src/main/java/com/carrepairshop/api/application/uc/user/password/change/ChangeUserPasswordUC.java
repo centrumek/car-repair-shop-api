@@ -1,7 +1,6 @@
 package com.carrepairshop.api.application.uc.user.password.change;
 
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
-import javax.validation.constraints.NotNull;
+import com.carrepairshop.api.application.domain.UserPrincipal;
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

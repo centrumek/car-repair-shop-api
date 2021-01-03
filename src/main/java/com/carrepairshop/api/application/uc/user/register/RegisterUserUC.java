@@ -1,6 +1,6 @@
 package com.carrepairshop.api.application.uc.user.register;
 
-import com.carrepairshop.api.application.domain.user.User;
+import com.carrepairshop.api.application.domain.User;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;

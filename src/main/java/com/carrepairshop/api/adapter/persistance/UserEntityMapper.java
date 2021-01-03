@@ -1,8 +1,8 @@
-package com.carrepairshop.api.adapter.persistance.user;
+package com.carrepairshop.api.adapter.persistance;
 
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.User.Role;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.User.Role;
+import com.carrepairshop.api.application.domain.UserPrincipal;
 import com.carrepairshop.api.application.uc.user.create.CreateUserUC.CreateUserCommand;
 import com.carrepairshop.api.application.uc.user.register.RegisterUserUC.RegisterUserCommand;
 import org.mapstruct.BeanMapping;
@@ -25,7 +25,6 @@ abstract class UserEntityMapper {
     abstract UserEntity mapToEntity(final RegisterUserCommand command,
                                     final Role role);
 
-    @Mapping(target = "uuid", expression = "java(userEntity.getUuid().toString())")
     abstract User mapToSlo(final UserEntity userEntity);
 
     @Mapping(target = "username", source = "email")

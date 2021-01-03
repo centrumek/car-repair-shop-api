@@ -1,18 +1,18 @@
-package com.carrepairshop.api.adapter.persistance.user;
+package com.carrepairshop.api.adapter.persistance;
 
 import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.User.Role;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
-import com.carrepairshop.api.application.port.user.in.UpdateUserPasswordPort;
-import com.carrepairshop.api.application.port.user.in.InsertUserPort;
-import com.carrepairshop.api.application.port.user.out.FindUserByEmailPort;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.User.Role;
+import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.application.port.in.UpdateUserPasswordPort;
+import com.carrepairshop.api.application.port.in.InsertUserPort;
+import com.carrepairshop.api.application.port.out.FindUserByEmailPort;
 import com.carrepairshop.api.application.uc.user.create.CreateUserUC.CreateUserCommand;
 import com.carrepairshop.api.application.uc.user.register.RegisterUserUC.RegisterUserCommand;
 import lombok.RequiredArgsConstructor;
 
-import static com.carrepairshop.api.adapter.persistance.user.UserEntityMapper.USER_ENTITY_MAPPER;
+import static com.carrepairshop.api.adapter.persistance.UserEntityMapper.USER_ENTITY_MAPPER;
 
 @RequiredArgsConstructor
 class UserPersistenceAdapter implements InsertUserPort, FindUserByEmailPort, UpdateUserPasswordPort {

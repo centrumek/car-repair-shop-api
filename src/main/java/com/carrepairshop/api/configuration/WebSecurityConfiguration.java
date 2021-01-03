@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import lombok.RequiredArgsConstructor;
 
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 @OpenAPIDefinition(info = @Info(title = "Car Repair Shop API"))
 @SecurityScheme(
@@ -49,8 +49,8 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter implements W
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users/register").permitAll()
                 .antMatchers( "/h2-console/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/users/register").anonymous()
                 .anyRequest().authenticated()
                 .and()
             .httpBasic()
@@ -62,7 +62,7 @@ class WebSecurityConfiguration extends WebSecurityConfigurerAdapter implements W
                 .frameOptions().disable()
                 .and()
             .cors()
-                .disable()
+                .and()
             .csrf()
                 .disable();
     }

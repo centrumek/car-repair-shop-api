@@ -1,14 +1,23 @@
-package com.carrepairshop.api.application.domain.ticket;
+package com.carrepairshop.api.application.domain;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import com.carrepairshop.api.application.domain.user.User;
+import java.util.UUID;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Value;
 
+@Value
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Ticket {
 
-    String id;
+    UUID uuid;
     User customer;
     String title;
+    String brand;
+    String model;
     String description;
     String attachedItems;
     Status status;

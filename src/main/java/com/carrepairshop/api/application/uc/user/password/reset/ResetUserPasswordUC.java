@@ -1,6 +1,6 @@
 package com.carrepairshop.api.application.uc.user.password.reset;
 
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
+import com.carrepairshop.api.application.domain.UserPrincipal;
 import javax.validation.constraints.Email;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

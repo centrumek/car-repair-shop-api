@@ -1,4 +1,4 @@
-package com.carrepairshop.api.adapter.persistance.user;
+package com.carrepairshop.api.adapter.persistance;
 
 import java.util.Optional;
 import java.util.UUID;

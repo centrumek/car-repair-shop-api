@@ -1,11 +1,11 @@
-package com.carrepairshop.api.application.domain.user;
+package com.carrepairshop.api.application.domain;
 
 import java.util.Collection;
 import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import com.carrepairshop.api.application.domain.user.User.Role;
+import com.carrepairshop.api.application.domain.User.Role;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -2,7 +2,7 @@ package com.carrepairshop.api.application.uc.user.authorize;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import com.carrepairshop.api.application.port.user.out.FindUserByEmailPort;
+import com.carrepairshop.api.application.port.out.FindUserByEmailPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

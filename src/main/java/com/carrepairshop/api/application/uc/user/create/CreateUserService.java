@@ -2,17 +2,17 @@ package com.carrepairshop.api.application.uc.user.create;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.carrepairshop.api.application.domain.user.User;
-import com.carrepairshop.api.application.domain.user.User.Role;
-import com.carrepairshop.api.application.domain.user.UserPrincipal;
-import com.carrepairshop.api.application.port.user.in.InsertUserPort;
-import com.carrepairshop.api.application.port.user.out.FindUserByEmailPort;
+import com.carrepairshop.api.application.domain.User;
+import com.carrepairshop.api.application.domain.User.Role;
+import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.application.port.in.InsertUserPort;
+import com.carrepairshop.api.application.port.out.FindUserByEmailPort;
 import javax.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 
-import static com.carrepairshop.api.application.domain.user.User.Role.CUSTOMER;
-import static com.carrepairshop.api.application.domain.user.User.Role.EMPLOYEE;
-import static com.carrepairshop.api.application.domain.user.User.Role.HEAD;
+import static com.carrepairshop.api.application.domain.User.Role.CUSTOMER;
+import static com.carrepairshop.api.application.domain.User.Role.EMPLOYEE;
+import static com.carrepairshop.api.application.domain.User.Role.HEAD;
 
 @RequiredArgsConstructor
 class CreateUserService implements CreateUserUC {
