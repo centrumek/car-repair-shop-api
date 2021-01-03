@@ -2,6 +2,7 @@ package com.carrepairshop.api.adapter.web;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.carrepairshop.api.application.domain.User;
 import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.application.uc.user.login.LoginUserUC;
 import com.carrepairshop.api.application.uc.user.password.change.ChangeUserPasswordUC;
 import com.carrepairshop.api.application.uc.user.password.change.ChangeUserPasswordUC.ChangeUserPasswordCommand;
 import com.carrepairshop.api.application.uc.user.create.CreateUserUC;
@@ -28,6 +30,7 @@ import lombok.RequiredArgsConstructor;
 class UserController {
 
     private final RegisterUserUC registerUserUC;
+    private final LoginUserUC loginUserUC;
     private final CreateUserUC createUserUC;
     private final ResetUserPasswordUC resetUserPasswordUC;
     private final ChangeUserPasswordUC changeUserPasswordUC;
@@ -35,6 +38,13 @@ class UserController {
     @PostMapping(value = "/register")
     User registerUser(@Valid @RequestBody final RegisterUserCommand command) {
         return registerUserUC.registerUser(command);
+    }
+
+    @Operation(security = @SecurityRequirement(name = "basicAuth"))
+    @PreAuthorize("hasAnyRole('CUSTOMER', 'EMPLOYEE', 'HEAD')")
+    @GetMapping(value = "/login")
+    User loginUser(@AuthenticationPrincipal final UserPrincipal userPrincipal) {
+        return loginUserUC.loginUser(userPrincipal);
     }
 
     @Operation(security = @SecurityRequirement(name = "basicAuth"))
