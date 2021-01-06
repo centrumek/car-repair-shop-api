@@ -23,12 +23,13 @@ class EditTicketService implements EditTicketUC {
     private final UpdateTicketPort updateTicketPort;
 
     @Override
-    public Ticket editTicket(final EditTicketCommand command,
+    public Ticket editTicket(final UUID uuid,
+                             final EditTicketCommand command,
                              final UserPrincipal userPrincipal) {
-        final var ticket = getTicketById(command.getUuid());
+        final var ticket = getTicketById(uuid);
         final var releasedBy = getUserByEmail(userPrincipal.getUsername());
         final var status = Status.valueOf(command.getStatus());
-        final var mergedCommand = mergeTicket(command, ticket);
+        final var mergedCommand = mergeTicket(uuid, command, ticket);
         if (status == RELEASED) {
             return updateTicketPort.updateTicket(mergedCommand
                 .withReleasedBy(releasedBy.getUuid())
@@ -38,10 +39,11 @@ class EditTicketService implements EditTicketUC {
         }
     }
 
-    private EditTicketCommand mergeTicket(final EditTicketCommand command,
+    private EditTicketCommand mergeTicket(final UUID uuid,
+                                          final EditTicketCommand command,
                                           final Ticket ticket) {
         return EditTicketCommand.builder()
-            .uuid(command.getUuid())
+            .uuid(uuid)
             .title(command.getTitle())
             .brand(command.getBrand())
             .model(command.getModel())

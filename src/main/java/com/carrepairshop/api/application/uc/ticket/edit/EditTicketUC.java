@@ -19,7 +19,8 @@ import lombok.With;
 
 public interface EditTicketUC {
 
-    Ticket editTicket(final EditTicketCommand command,
+    Ticket editTicket(final UUID uuid,
+                      final EditTicketCommand command,
                       final UserPrincipal userPrincipal);
 
     @Value
@@ -28,9 +29,6 @@ public interface EditTicketUC {
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     @EqualsAndHashCode(callSuper = false)
     class EditTicketCommand {
-
-        @NotNull
-        UUID uuid;
 
         @NotBlank
         String title;
@@ -53,6 +51,9 @@ public interface EditTicketUC {
         BigDecimal finalPrice;
 
         String calculationNote;
+
+        @Hidden
+        UUID uuid;
 
         @Hidden
         BigDecimal estimatedPrice;
