@@ -54,7 +54,7 @@ class TicketController {
         return getTicketUC.getTicket(id, userPrincipal);
     }
 
-    // by email, by status, brand, model, date combine?
+    // by email, by status, brand, model, date combine? https://reflectoring.io/spring-data-specifications/
     void searchTickets() {
         throw new UnsupportedOperationException();
     }
