@@ -3,6 +3,8 @@ package com.carrepairshop.api.application.domain;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
+import com.carrepairshop.api.common.CustomInstantSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,11 +24,17 @@ public class Ticket {
     String attachedItems;
     Status status;
     BigDecimal estimatedPrice;
+
+    @JsonSerialize(using = CustomInstantSerializer.class)
     Instant estimatedRelease;
     BigDecimal finalPrice;
     String calculationNote;
+
+    @JsonSerialize(using = CustomInstantSerializer.class)
     Instant createdAt;
     User createdBy;
+
+    @JsonSerialize(using = CustomInstantSerializer.class)
     Instant releasedAt;
     User releasedBy;
 

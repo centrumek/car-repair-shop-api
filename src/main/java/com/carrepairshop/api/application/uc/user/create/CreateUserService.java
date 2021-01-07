@@ -37,9 +37,9 @@ class CreateUserService implements CreateUserUC {
 
     private void validateCreateUserPermission(final Role invokerRole,
                                               final Role insertRole) {
-        var customerCondition = (insertRole == CUSTOMER && (invokerRole == EMPLOYEE || invokerRole == HEAD));
-        var employeeCondition = (insertRole == EMPLOYEE && invokerRole == HEAD);
-        if (!customerCondition && !employeeCondition) {
+        var customerCondition = !(insertRole == CUSTOMER && (invokerRole == EMPLOYEE || invokerRole == HEAD));
+        var employeeCondition = !(insertRole == EMPLOYEE && invokerRole == HEAD);
+        if (customerCondition && employeeCondition) {
             throw new AccessDeniedException("Action forbidden, check your permissions.");
         }
     }

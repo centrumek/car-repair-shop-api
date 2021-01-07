@@ -5,6 +5,8 @@ import java.time.Instant;
 import java.util.UUID;
 import com.carrepairshop.api.application.domain.Ticket;
 import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.common.CustomInstantDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.Hidden;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
@@ -53,6 +55,7 @@ public interface CreateTicketUC {
 
         @NotNull
         @Future
+        @JsonDeserialize(using = CustomInstantDeserializer.class)
         Instant estimatedRelease;
 
         @Hidden

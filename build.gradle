@@ -44,6 +44,7 @@ testlogger {
 ext {
 	groovyVersion = '2.5.14'
 	spockVersion = '1.3-groovy-2.5'
+	hibernateSearchVersion = '5.11.7.Final'
 	springDocOpenApi = '1.5.2'
 	lombokVersion = '1.18.12'
 	mapStructVersion = '1.3.1.Final'
@@ -55,6 +56,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation "org.hibernate:hibernate-search-orm:${hibernateSearchVersion}"
 	implementation "org.springdoc:springdoc-openapi-ui:${springDocOpenApi}"
 	implementation "org.springdoc:springdoc-openapi-security:${springDocOpenApi}"
 	implementation "org.flywaydb:flyway-core:${flywayVersion}"

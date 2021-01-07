@@ -21,12 +21,19 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.FieldBridge;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.bridge.builtin.BigDecimalBridge;
+import org.hibernate.search.bridge.builtin.EnumBridge;
 
 import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.EnumType.STRING;
 import static lombok.AccessLevel.PRIVATE;
 import static lombok.AccessLevel.PROTECTED;
 
+@Indexed
 @DynamicInsert
 @DynamicUpdate
 @Entity
@@ -40,19 +47,24 @@ import static lombok.AccessLevel.PROTECTED;
 @ToString(callSuper = true)
 class TicketEntity extends BaseEntity {
 
+    @IndexedEmbedded
     @ManyToOne
     @JoinColumn(name = "customer_id")
     UserEntity customer;
 
+    @Field
     @Column(name = "title")
     String title;
 
+    @Field
     @Column(name = "brand")
     String brand;
 
+    @Field
     @Column(name = "model")
     String model;
 
+    @Field
     @Lob
     @Column(name = "description")
     String description;
@@ -78,11 +90,13 @@ class TicketEntity extends BaseEntity {
     @Column(name = "calculation_note")
     String calculationNote;
 
+    @IndexedEmbedded
     @ManyToOne
     @JoinColumn(name = "created_by")
     UserEntity createdBy;
 
-    @ManyToOne()
+    @IndexedEmbedded
+    @ManyToOne
     @JoinColumn(name = "released_by")
     UserEntity releasedBy;
 

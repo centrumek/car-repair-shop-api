@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.carrepairshop.api.application.domain.Ticket;
 import com.carrepairshop.api.application.domain.UserPrincipal;
@@ -19,11 +20,13 @@ import com.carrepairshop.api.application.uc.ticket.create.CreateTicketUC.CreateT
 import com.carrepairshop.api.application.uc.ticket.edit.EditTicketUC;
 import com.carrepairshop.api.application.uc.ticket.edit.EditTicketUC.EditTicketCommand;
 import com.carrepairshop.api.application.uc.ticket.get.GetTicketUC;
+import com.carrepairshop.api.application.uc.ticket.search.SearchTicketUC;
 import com.carrepairshop.api.common.ApiPageable;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -34,6 +37,7 @@ class TicketController {
     private final CreateTicketUC createTicketUC;
     private final GetTicketUC getTicketUC;
     private final EditTicketUC editTicketUC;
+    private final SearchTicketUC searchTicketUC;
 
     @ApiPageable
     @Operation(security = @SecurityRequirement(name = "basicAuth"))
@@ -53,9 +57,13 @@ class TicketController {
         return getTicketUC.getTicket(id, userPrincipal);
     }
 
-    // by email, by status, brand, model, date combine? https://reflectoring.io/spring-data-specifications/
-    void searchTickets() {
-        throw new UnsupportedOperationException();
+    @ApiPageable
+    @Operation(security = @SecurityRequirement(name = "basicAuth"))
+    @PreAuthorize("hasAnyRole('EMPLOYEE', 'HEAD')")
+    @GetMapping("/search")
+    Page<Ticket> searchTickets(@RequestParam @NotBlank final String text,
+                               @Parameter(hidden = true) final Pageable pageable) {
+        return searchTicketUC.searchTickets(text, pageable);
     }
 
     @Operation(security = @SecurityRequirement(name = "basicAuth"))
