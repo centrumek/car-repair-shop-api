@@ -66,6 +66,6 @@ class EditTicketService implements EditTicketUC {
 
     private User getUserByEmail(final String email) {
         return findUserByEmailPort.findUserByEmail(email)
-                                  .orElseThrow(() -> new EntityExistsException("email '" + email + "' not exists."));
+                                  .orElseThrow(() -> new EntityNotFoundException("email '" + email + "' not exists."));
     }
 }

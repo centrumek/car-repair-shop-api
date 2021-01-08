@@ -6,6 +6,7 @@ import com.carrepairshop.api.application.domain.UserPrincipal;
 import com.carrepairshop.api.application.port.in.InsertTicketPort;
 import com.carrepairshop.api.application.port.out.FindUserByEmailPort;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -26,6 +27,6 @@ class CreateTicketService implements CreateTicketUC {
 
     private User getUserByEmail(final String email) {
         return findUserByEmailPort.findUserByEmail(email)
-                                  .orElseThrow(() -> new EntityExistsException("email '" + email + "' not exists."));
+                                  .orElseThrow(() -> new EntityNotFoundException("email '" + email + "' not exists."));
     }
 }

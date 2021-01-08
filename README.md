@@ -42,7 +42,7 @@ besides well-known **controller -> facade -> service -> repository** layer.
 - Lombok 1.18.12
 - MapStruct 1.3.1.Final
 - H2 Database 1.4.200
-- Flyway 5.2.1
+- Flyway 7.4.0
 - SpringDoc OpenAPI 1.5.2
 - Groovy 2.5.14 (tests)
 - Spock Framework 1.3-groovy-2.5 (tests)
