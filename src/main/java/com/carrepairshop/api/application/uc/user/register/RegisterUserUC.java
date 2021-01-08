@@ -3,6 +3,7 @@ package com.carrepairshop.api.application.uc.user.register;
 import com.carrepairshop.api.application.domain.User;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,12 +30,15 @@ public interface RegisterUserUC {
         String lastName;
 
         @Email
+        @NotNull
         String email;
 
         @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$", message = "Minimum eight characters, at least one letter and one number")
+        @NotNull
         String password;
 
         @Pattern(regexp = "(^$|\\d{10})")
+        @NotNull
         String mobilePhone;
     }
 }

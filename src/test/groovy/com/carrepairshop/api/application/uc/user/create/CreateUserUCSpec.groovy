@@ -114,5 +114,6 @@ class CreateUserUCSpec extends Specification {
             HEAD     | CUSTOMER
             EMPLOYEE | EMPLOYEE
             HEAD     | EMPLOYEE
+            HEAD     | HEAD
     }
 }
