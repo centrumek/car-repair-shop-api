@@ -70,7 +70,14 @@ This service is based on **Spring Boot** and **Gradle** so after cloning reposit
 ./gradlew bootRun
 ```
 
-#### As a docker container
+### How to run tests?
+
+If you want to see test scenarios run below command
+```
+./gradlew clean build
+```
+
+### As a docker container
 Firstly make sure that application `jar` is created.
 ```
 ./gradlew clean build
