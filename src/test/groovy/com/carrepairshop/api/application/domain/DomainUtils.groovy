@@ -1,5 +1,7 @@
 package com.carrepairshop.api.application.domain
 
+import org.springframework.data.domain.PageImpl
+
 import java.security.SecureRandom
 
 import static org.apache.commons.lang3.RandomStringUtils.random
@@ -10,6 +12,11 @@ class DomainUtils {
 
     private static final SecureRandom RANDOM = new SecureRandom()
     private static final int DEFAULT_RANDOM_LENGTH = 10
+
+    static def stubUsersPage() {
+        def users = [stubUser(), stubUser(), stubUser(), stubUser()]
+        return new PageImpl<>(users)
+    }
 
     static def stubUser(User.Role role) {
         return User.builder()

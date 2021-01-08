@@ -16,13 +16,16 @@ for these car repair shops within indroduced issue.
  2. Logging **(customer, employee, head)**
  3. Creating customer accounts **(employee, head)**
  4. Creating employee accounts **(head)**
- 5. Creating tickets - acceptance protocol of given car including 
+ 5. View all users **(employee, head)**
+ 6. Reset user password **(employee, head)**
+ 7. Change user self-password **(customer, employee, head)**
+ 8. Creating tickets - acceptance protocol of given car including 
  estimated repair price, notes, customer story, brand, model etc. **(employee, head)**
- 6. Editing tickets - status, final price, calculation note etc. **(employee, head)**
- 7. View of a specific ticket **(customer, employee, head)**
- 8. View of customer tickets - actual and historic **(customer, employee, head)**
- 9. View of all tickets - actual and historic **(employee, head)**
- 10. Search console for tickets - by brand, customerId, model etc. **(employee, head)**
+ 9. Editing tickets - status, final price, calculation note etc. **(employee, head)**
+ 10. View of a specific ticket **(customer, employee, head)**
+ 11. View of customer tickets - actual and historic **(customer, employee, head)**
+ 12. View of all tickets - actual and historic **(employee, head)**
+ 13. Search console for tickets - by brand, model, email, firstname etc. **(employee, head)**
 
 ### Hexagonal architecture
 

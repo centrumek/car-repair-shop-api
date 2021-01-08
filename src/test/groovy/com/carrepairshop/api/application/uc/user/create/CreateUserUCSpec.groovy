@@ -16,6 +16,8 @@ import static com.carrepairshop.api.application.domain.User.Role.CUSTOMER
 import static com.carrepairshop.api.application.domain.User.Role.EMPLOYEE
 import static com.carrepairshop.api.application.domain.User.Role.HEAD
 import static org.apache.commons.lang3.RandomStringUtils.random
+import static org.apache.commons.lang3.RandomStringUtils.randomAscii
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric
 
 class CreateUserUCSpec extends Specification {
 
@@ -38,8 +40,11 @@ class CreateUserUCSpec extends Specification {
                     .email(CMD_EMAIL)
                     .password(CMD_EMAIL)
                     .role(CMD_ROLE.name())
+                    .firstName(randomAscii(10))
+                    .lastName(randomAscii(10))
+                    .mobilePhone(randomNumeric(10))
                     .build()
-
+            def userPrincipal = stubUserPrinciple(INVOKER_ROLE)
             def expectedUser = stubUser()
 
         and:
@@ -49,7 +54,7 @@ class CreateUserUCSpec extends Specification {
             0 * _
 
         when:
-            def actualUser = uc.createUser(command, stubUserPrinciple(INVOKER_ROLE))
+            def actualUser = uc.createUser(command, userPrincipal)
 
         then:
             actualUser == expectedUser

@@ -36,6 +36,7 @@ public class CustomJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJ
     public <S extends T> Page<S> search(String terms, Pageable pageable, Class<S> clazz, String ... fields) {
         final var fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
 
+        // TODO - status i order
         try {
             fullTextEntityManager.createIndexer().startAndWait();
         } catch (InterruptedException e) {

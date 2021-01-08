@@ -5,10 +5,11 @@ import java.time.Instant;
 import java.util.UUID;
 import com.carrepairshop.api.application.domain.Ticket;
 import com.carrepairshop.api.application.domain.UserPrincipal;
+import com.carrepairshop.api.common.CustomInstantDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.Hidden;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -59,6 +60,7 @@ public interface EditTicketUC {
         BigDecimal estimatedPrice;
 
         @Hidden
+        @JsonDeserialize(using = CustomInstantDeserializer.class)
         Instant estimatedRelease;
 
         @Hidden
@@ -71,6 +73,7 @@ public interface EditTicketUC {
         UUID releasedBy;
 
         @Hidden
+        @JsonDeserialize(using = CustomInstantDeserializer.class)
         Instant releasedAt;
     }
 }
