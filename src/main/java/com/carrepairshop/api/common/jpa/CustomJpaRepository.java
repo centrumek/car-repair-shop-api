@@ -1,4 +1,4 @@
-package com.carrepairshop.api.configuration.jpa;
+package com.carrepairshop.api.common.jpa;
 
 import java.io.Serializable;
 import org.springframework.data.domain.Page;

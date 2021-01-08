@@ -69,3 +69,17 @@ This service is based on **Spring Boot** and **Gradle** so after cloning reposit
 ```
 ./gradlew bootRun
 ```
+
+#### As a docker container
+Firstly make sure that application `jar` is created.
+```
+./gradlew clean build
+```
+now you can build docker image
+```
+docker build --build-arg JAR_FILE='build/libs/car-repair-shop-api-*-SNAPSHOT.jar' -t car-repair-shop-api:snapshot .
+```
+and now you can run it
+```
+docker run -p 8081:8081 --name car-repair-shop-api car-repair-shop-api:snapshot -jar service.jar
+```

@@ -1,4 +1,4 @@
-package com.carrepairshop.api.configuration.jpa;
+package com.carrepairshop.api.common.jpa;
 
 import java.io.Serializable;
 import org.springframework.data.domain.Page;
@@ -33,7 +33,7 @@ public class CustomJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJ
     }
 
     @Override
-    public <S extends T> Page<S> search(String terms, Pageable pageable, Class<S> clazz, String ... fields) {
+    public <S extends T> Page<S> search(String text, Pageable pageable, Class<S> clazz, String ... fields) {
         final var fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
 
         // TODO - status i order
@@ -52,7 +52,7 @@ public class CustomJpaRepositoryImpl<T, ID extends Serializable> extends SimpleJ
             .keyword()
             .wildcard()
             .onFields(fields)
-            .matching(terms + "*")
+            .matching(text)
             .createQuery();
 
         final var jpaQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, clazz);

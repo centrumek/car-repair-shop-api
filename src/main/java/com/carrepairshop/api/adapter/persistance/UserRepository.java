@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import com.carrepairshop.api.configuration.jpa.CustomJpaRepository;
+import com.carrepairshop.api.common.jpa.CustomJpaRepository;
 
 @Repository
 interface UserRepository extends CustomJpaRepository<UserEntity, UUID> {
